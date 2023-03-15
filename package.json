@@ -1,7 +1,7 @@
 {
   "name": "unplugin-ftp-upload",
   "type": "module",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "packageManager": "pnpm@7.1.1",
   "description": "After you build your project, automatically upload the project to your service.",
   "license": "MIT",
