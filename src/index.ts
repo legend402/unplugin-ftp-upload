@@ -44,10 +44,11 @@ export default createUnplugin<Options | undefined>((options) => {
       },
     },
     webpack(config) {
-      distName = config.outputPath
+      const packPath = config.root.options.output.path
+      distName = packPath?.split('/').at(-1) || 'dist'
     },
     rollup: {
-      renderStart(option) {
+      outputOptions(option) {
         distName = option.dir || 'dist'
       },
     },

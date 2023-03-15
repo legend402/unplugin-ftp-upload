@@ -1,28 +1,26 @@
-# unplugin-starter
+# unplugin-ftp-upload
 
-[![NPM version](https://img.shields.io/npm/v/unplugin-starter?color=a1b858&label=)](https://www.npmjs.com/package/unplugin-starter)
+[![NPM version](https://img.shields.io/npm/v/unplugin-ftp-upload?color=a1b858&label=)](https://www.npmjs.com/package/unplugin-ftp-upload)
 
-Starter template for [unplugin](https://github.com/unjs/unplugin).
+After you build your project, automatically upload the project to your service.
 
-## Template Usage
+## Usage
 
-To use this template, clone it down using:
+| options    | desc                                   | type   | default |
+| --------   | -------------------------------------- | ------ | ------- |
+| host       | service host                           | string |         |
+| port       | service port                           | string |         |
+| username   | service username                       | string |         |
+| password   | service password                       | string |         |
+| serviceDir | website dir in your service            | string |         |
+| delay      | How long after the package is complete | number |         |
 
-```bash
-npx degit antfu/unplugin-starter my-unplugin
-```
-
-And do a global replace of `unplugin-starter` with your plugin name.
-
-Then you can start developing your unplugin 🔥
-
-To test your plugin, run: `pnpm run dev`
-To release a new version, run: `pnpm run release`
+other config, [look here](https://www.npmjs.com/package/ssh2-sftp-client)
 
 ## Install
 
 ```bash
-npm i unplugin-starter
+npm i unplugin-ftp-upload
 ```
 
 <details>
@@ -30,7 +28,7 @@ npm i unplugin-starter
 
 ```ts
 // vite.config.ts
-import Starter from 'unplugin-starter/vite'
+import Starter from 'unplugin-ftp-upload/vite'
 
 export default defineConfig({
   plugins: [
@@ -48,7 +46,7 @@ Example: [`playground/`](./playground/)
 
 ```ts
 // rollup.config.js
-import Starter from 'unplugin-starter/rollup'
+import Starter from 'unplugin-ftp-upload/rollup'
 
 export default {
   plugins: [
@@ -68,7 +66,7 @@ export default {
 module.exports = {
   /* ... */
   plugins: [
-    require('unplugin-starter/webpack')({ /* options */ })
+    require('unplugin-ftp-upload/webpack')({ /* options */ })
   ]
 }
 ```
@@ -82,7 +80,7 @@ module.exports = {
 // nuxt.config.js
 export default {
   buildModules: [
-    ['unplugin-starter/nuxt', { /* options */ }],
+    ['unplugin-ftp-upload/nuxt', { /* options */ }],
   ],
 }
 ```
@@ -99,7 +97,7 @@ export default {
 module.exports = {
   configureWebpack: {
     plugins: [
-      require('unplugin-starter/webpack')({ /* options */ }),
+      require('unplugin-ftp-upload/webpack')({ /* options */ }),
     ],
   },
 }
@@ -113,7 +111,7 @@ module.exports = {
 ```ts
 // esbuild.config.js
 import { build } from 'esbuild'
-import Starter from 'unplugin-starter/esbuild'
+import Starter from 'unplugin-ftp-upload/esbuild'
 
 build({
   plugins: [Starter()],
