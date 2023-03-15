@@ -36,7 +36,7 @@ export default createUnplugin<Options | undefined>((options) => {
         finally {
           client.end()
         }
-      }, 1500)
+      }, options.delay || 1500)
     },
     vite: {
       configResolved(config) {
