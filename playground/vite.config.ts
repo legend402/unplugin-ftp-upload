@@ -6,11 +6,9 @@ export default defineConfig({
   plugins: [
     Inspect(),
     Unplugin({
-      host: '8.136.21.236',
-      port: 22,
-      username: 'root',
-      password: 'hyjhyf419123.',
+      ...require('./auth.json'),
       serviceDir: '/root/web/test',
+      delay: 1500,
     }),
   ],
 })
