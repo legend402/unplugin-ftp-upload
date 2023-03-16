@@ -18,6 +18,8 @@ After you build your project, automatically upload the project to your service.
 
 other config, [look here](https://www.npmjs.com/package/ssh2-sftp-client)
 
+目前支持wepack，vite，其他打包工具还在摸索中
+
 ## Install
 
 ```bash
