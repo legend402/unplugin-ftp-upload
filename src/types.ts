@@ -3,4 +3,5 @@ export interface Options extends Client.ConnectOptions {
   // define your plugin options here
   serviceDir: string
   delay?: number
+  backupPath?: string
 }

@@ -8,6 +8,7 @@ export default defineConfig({
     Unplugin({
       ...require('./auth.json'),
       serviceDir: '/root/web/test',
+      backupPath: '/root/web/test_backup',
       delay: 1500,
     }),
   ],

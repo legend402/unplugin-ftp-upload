@@ -16,16 +16,30 @@ export default createUnplugin<Options | undefined>((options) => {
 
       const localPath = path.resolve(process.cwd(), distName)
       const remotePath = options?.serviceDir
+      const remoteBackupPath = options?.backupPath
 
       setTimeout(async () => {
         const client = new Client()
         try {
           await client.connect(options)
           console.log('连接服务器成功')
-          if (await client.exists(remotePath)) {
-            await client.rmdir(remotePath, true)
-            console.log('删除成功')
+
+          if (remoteBackupPath && (await client.exists(remoteBackupPath))) {
+            await client.rmdir(remoteBackupPath, true)
+            console.log('删除上一份备份文件')
           }
+
+          if (await client.exists(remotePath)) {
+            if (remoteBackupPath) {
+              await client.rename(remotePath, remoteBackupPath)
+              console.log('成功生成备份文件')
+            }
+            else {
+              await client.rmdir(remotePath, true)
+              console.log(`删除${remotePath}文件`)
+            }
+          }
+
           const result = await client.uploadDir(localPath, remotePath)
           console.log('上传成功')
           return result
@@ -44,8 +58,14 @@ export default createUnplugin<Options | undefined>((options) => {
       },
     },
     webpack(config) {
-      const packPath = config.root.options.output.path
-      distName = packPath?.split('/').at(-1) || 'dist'
+      let packPath: string | undefined
+      try {
+        packPath = config.root.options.output.path
+      }
+      catch (error) {
+        packPath = config.options.output.path
+      }
+      distName = packPath?.replaceAll('\\', '/').split('/').at(-1) || 'dist'
     },
     rollup: {
       outputOptions(option) {

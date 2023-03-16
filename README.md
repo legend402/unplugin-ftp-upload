@@ -6,14 +6,15 @@ After you build your project, automatically upload the project to your service.
 
 ## Usage
 
-| options    | desc                                   | type   | default |
-| --------   | -------------------------------------- | ------ | ------- |
-| host       | service host                           | string |         |
-| port       | service port                           | string |         |
-| username   | service username                       | string |         |
-| password   | service password                       | string |         |
-| serviceDir | website dir in your service            | string |         |
-| delay      | How long after the package is complete | number |         |
+| options    | desc                                   | type   | default | must |
+| ---------- | -------------------------------------- | ------ | ------- | ---- |
+| host       | service host                           | string |         | ✅   |
+| port       | service port                           | string |         | ✅   |
+| username   | service username                       | string |         | ✅   |
+| password   | service password                       | string |         | ✅   |
+| serviceDir | website dir in your service            | string |         | ✅   |
+| delay      | How long after the package is complete | number | 1500ms  | ❌   |
+| backupPath | backup file path                       | string |         | ❌   |
 
 other config, [look here](https://www.npmjs.com/package/ssh2-sftp-client)
 
@@ -39,24 +40,7 @@ export default defineConfig({
 
 Example: [`playground/`](./playground/)
 
-<br></details>
-
-<details>
-<summary>Rollup</summary><br>
-
-```ts
-// rollup.config.js
-import Starter from 'unplugin-ftp-upload/rollup'
-
-export default {
-  plugins: [
-    Starter({ /* options */ }),
-  ],
-}
-```
-
-<br></details>
-
+`<br></details>`
 
 <details>
 <summary>Webpack</summary><br>
@@ -71,23 +55,7 @@ module.exports = {
 }
 ```
 
-<br></details>
-
-<details>
-<summary>Nuxt</summary><br>
-
-```ts
-// nuxt.config.js
-export default {
-  buildModules: [
-    ['unplugin-ftp-upload/nuxt', { /* options */ }],
-  ],
-}
-```
-
-> This module works for both Nuxt 2 and [Nuxt Vite](https://github.com/nuxt/vite)
-
-<br></details>
+`<br></details>`
 
 <details>
 <summary>Vue CLI</summary><br>
@@ -103,19 +71,4 @@ module.exports = {
 }
 ```
 
-<br></details>
-
-<details>
-<summary>esbuild</summary><br>
-
-```ts
-// esbuild.config.js
-import { build } from 'esbuild'
-import Starter from 'unplugin-ftp-upload/esbuild'
-
-build({
-  plugins: [Starter()],
-})
-```
-
-<br></details>
+`<br></details>`
